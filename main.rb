@@ -1,5 +1,6 @@
 require_relative 'helpers'
-require_relative 'add_book'
+require './add_book'
+require './label'
 
 # Create App class
 class App
@@ -8,6 +9,7 @@ class App
 
   def initialize
     @books = []
+    @labels = [Label.new('The Family That Preys.', 'White'),Label.new('I Was in Heaven', 'Yellow'),Label.new('Love and Romace.', 'Red')]
   end
 
   def run
