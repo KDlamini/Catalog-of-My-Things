@@ -10,7 +10,7 @@ module ListItems
     if @books.empty?
       puts "\n Books list is empty."
     else
-        @books.each_with_index do |book, index|
+      @books.each_with_index do |book, index|
         puts "#{index}) Title: #{book.label.title} | Publisher: #{book.publisher} | Condition: #{book.cover_state}"
       end
     end
