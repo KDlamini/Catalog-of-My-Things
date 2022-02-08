@@ -66,6 +66,13 @@ $ rubocop --auto-correct-all | rubocop -A
 - Twitter: [@RealSimoNkosi](https://twitter.com/RealSimoNkosi)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/simo-nkosi-418523180/)
 
+👤 **Mohamed Badr**
+
+- GitHub: [@mbdesigns1989](https://github.com/mbdesigns1989)
+- LinkedIn: [mohamed badr](https://www.linkedin.com/in/mohamed-badr-mb/)
+
+
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
