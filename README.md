@@ -77,9 +77,6 @@ $ rubocop --auto-correct-all | rubocop -A
 - Twitter: [@twitterhandle](https://twitter.com/Hamid87789454/)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/hamid-murambiwa/)
 
-
-
-
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
