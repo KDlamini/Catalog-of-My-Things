@@ -71,6 +71,13 @@ $ rubocop --auto-correct-all | rubocop -A
 - GitHub: [@mbdesigns1989](https://github.com/mbdesigns1989)
 - LinkedIn: [mohamed badr](https://www.linkedin.com/in/mohamed-badr-mb/)
 
+👤 **Hamid Murambiwa**
+
+- GitHub: [@githubhandle](https://github.com/hamid-murambiwa/)
+- Twitter: [@twitterhandle](https://twitter.com/Hamid87789454/)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/hamid-murambiwa/)
+
+
 
 
 ## 🤝 Contributing
