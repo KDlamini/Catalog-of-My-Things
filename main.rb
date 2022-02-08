@@ -1,10 +1,17 @@
 require_relative 'helpers'
+require_relative 'add_book'
 
 # Create App class
 class App
   include Helpers
+  include CreateBook
+
+  def initialize
+    @books = []
+  end
 
   def run
+    clear
     puts "\nWelcome to the 'Catalog of my things' app"
     prompt_user
   end
@@ -69,7 +76,7 @@ class App
   def add_selection(input)
     case input
     when '9'
-      puts 'Add a book'
+      add_book
     when '10'
       puts 'Add a music album'
     when '11'
@@ -80,6 +87,10 @@ class App
       puts 'Goob bye (:......'
       exit
     end
+  end
+
+  def update_books(book)
+    @books << book
   end
 end
 
