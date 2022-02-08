@@ -10,4 +10,14 @@ class Book < Item
     @publisher = publisher
     @cover_state = cover_state
   end
+
+  def book_info
+    "Publisher\'s name : \"#{@publisher}\"\n
+    Published on : #{@publish_date}\n
+    Cover state: #{cover_state}"
+  end
+
+  def can_be_archived?
+    @cover_state == 'bad' || super
+  end
 end
