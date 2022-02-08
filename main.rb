@@ -1,11 +1,13 @@
 require_relative 'helpers'
 require './add_book'
 require './label'
+require './list_items'
 
 # Create App class
 class App
   include Helpers
   include CreateBook
+  include ListItems
 
   def initialize
     @books = []
@@ -37,27 +39,27 @@ class App
   end
 
   def options
-    puts "\n Choose from the options below:
-        1 - List all books
-        2 - List all music albums
-        3 - List all movies
-        4 - List of games
-        5 - List all genres (e.g 'Comedy', 'Thriller')
-        6 - List all labels (e.g. 'Gift', 'New')
-        7 - List all authors (e.g. 'Stephen King')
-        8 - List all sources (e.g. 'From a friend', 'Online shop')
-        9 - Add a book
-        10 - Add a music album
-        11 - Add a movie
-        12 - Add a game
-        13 - exit
-        "
+    puts "\nChoose from the options below:
+    1 - List all books
+    2 - List all music albums
+    3 - List all movies
+    4 - List of games
+    5 - List all genres (e.g 'Comedy', 'Thriller')
+    6 - List all labels (e.g. 'Gift', 'New')
+    7 - List all authors (e.g. 'Stephen King')
+    8 - List all sources (e.g. 'From a friend', 'Online shop')
+    9 - Add a book
+    10 - Add a music album
+    11 - Add a movie
+    12 - Add a game
+    13 - exit
+    "
   end
 
   def list_selection(input)
     case input
     when '1'
-      puts 'List all books'
+      list_all_books
     when '2'
       puts 'List all music albums'
     when '3'
@@ -67,7 +69,8 @@ class App
     when '5'
       puts 'List all genres'
     when '6'
-      puts 'List all labels'
+      list_labels
+      continue?
     when '7'
       puts 'List all authors'
     when '8'
