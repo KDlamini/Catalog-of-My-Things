@@ -9,6 +9,9 @@ class App
   include CreateBook
   include ListItems
 
+  attr_accessor :books
+  attr_reader :labels
+
   def initialize
     @books = []
     @labels = [Label.new('The Family That Preys.', 'White'),Label.new('I Was in Heaven', 'Yellow'),Label.new('Love and Romace.', 'Red')]
@@ -95,7 +98,7 @@ class App
   end
 
   def update_books(book)
-    @books << book
+    books << book
   end
 end
 
