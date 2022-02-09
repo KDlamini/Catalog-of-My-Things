@@ -18,4 +18,18 @@ module PreserverModule
   def file_exist?(path)
     File.exist? path
   end
+
+  def save_book(book)
+    path = 'json/books.json'
+    data = fetch_data(path)
+
+    new_book = { 
+        publisher: book.publisher,
+        cover_state: book.cover_state,
+        publish_date: book.publish_date,
+    }
+
+    data.push(new_book)
+    save(path, data)
+  end
 end
