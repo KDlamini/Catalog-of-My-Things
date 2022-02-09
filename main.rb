@@ -1,6 +1,7 @@
 require_relative './modules/helpers'
 require './modules/add_book'
 require './modules/list_items'
+require './modules/preserver_module'
 require './classes/label'
 
 # Create App class
@@ -8,9 +9,10 @@ class App
   include Helpers
   include CreateBook
   include ListItems
+  include PreserverModule
 
   def initialize
-    @books = []
+    @books = fetch_books
     @labels = [Label.new('The Family That Preys.', 'White'),Label.new('I Was in Heaven', 'Yellow'),Label.new('Love and Romace.', 'Red')]
   end
 
@@ -96,6 +98,7 @@ class App
 
   def update_books(book)
     @books << book
+    save_book(book)
   end
 end
 
