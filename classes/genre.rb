@@ -10,5 +10,8 @@ class Genre
     @items = []
   end
 
-  
+  def add_item(new_item)
+    @items.push(new_item) unless @items.include?(new_item)
+    new_item.genre = self
+  end
 end
