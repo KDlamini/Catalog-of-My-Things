@@ -11,12 +11,6 @@ class Game < Item
     @last_played_at = last_played_at
   end
 
-  def game_info
-    "\n multiplayer : '#{@multiplayer}'
-        \n last_played_at : #{@last_played_at}
-        "
-  end
-
   def can_be_archived?
     @cover_state > 2 || super
   end

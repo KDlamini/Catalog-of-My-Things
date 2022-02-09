@@ -1,4 +1,6 @@
 require_relative 'helpers'
+require_relative 'add_game'
+require_relative 'author'
 require './add_book'
 require './label'
 require './list_items'
@@ -8,10 +10,13 @@ class App
   include Helpers
   include CreateBook
   include ListItems
+  include CreateGame
 
   def initialize
     @books = []
+    @games = []
     @labels = [Label.new('The Family That Preys.', 'White'),Label.new('I Was in Heaven', 'Yellow'),Label.new('Love and Romace.', 'Red')]
+    @authors = [Author.new('Hamid', 'Faris'), Author.new('David', 'Thlamini'), Author.new('Goliath', 'Smith')]
   end
 
   def run
@@ -60,19 +65,22 @@ class App
     case input
     when '1'
       list_all_books
+      continue?
     when '2'
       puts 'List all music albums'
     when '3'
       puts 'List all movies'
     when '4'
-      puts 'List of games'
+      list_all_games
+      continue?
     when '5'
       puts 'List all genres'
     when '6'
       list_labels
       continue?
     when '7'
-      puts 'List all authors'
+      list_authors
+      continue?
     when '8'
       puts 'List all sources'
     end
@@ -87,7 +95,7 @@ class App
     when '11'
       puts 'Add a movie'
     when '12'
-      puts 'Add a game'
+      add_game
     when '13'
       puts 'Goob bye (:......'
       exit
@@ -96,6 +104,10 @@ class App
 
   def update_books(book)
     @books << book
+  end
+
+  def update_games(game)
+    @games << game
   end
 end
 
