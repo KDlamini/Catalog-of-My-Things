@@ -5,7 +5,7 @@ module CreateBook
   include ListItems
 
   def add_book
-    print 'Published date (dd-mm-yyyy): '
+    print 'Published date (yyyy-mm-dd): '
     publish_date = gets.chomp
     validate_date(publish_date)
 
@@ -29,7 +29,7 @@ module CreateBook
   end
 
   def validate_date(date)
-    format_ok = date.match(/\d{2}-\d{2}-\d{4}/)
+    format_ok = date.match(/\d{4}-\d{2}-\d{2}/)
 
     if format_ok
       nil
@@ -43,7 +43,7 @@ module CreateBook
   def validate_condition(condition)
     condition = condition.capitalize
 
-    if %w[Good Bad].include?(condition)
+    if %w[Good Bad New Old].include?(condition)
       condition
     else
       clear
