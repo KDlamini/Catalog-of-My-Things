@@ -1,5 +1,5 @@
-require './book'
-require './list_items'
+require './classes/book'
+require_relative 'list_items'
 
 module CreateBook
   include ListItems
@@ -9,7 +9,7 @@ module CreateBook
     publish_date = gets.chomp
     validate_date(publish_date)
 
-    print 'What is the book condition? [good/bad]: '
+    print 'What is the book condition? [new/old/good/bad]: '
     cover_state = gets.chomp.downcase
     cover_state = validate_condition(cover_state)
 
@@ -48,7 +48,7 @@ module CreateBook
     else
       clear
       puts "Invalid condition. Please try again.\n\n"
-      print 'What is the book condition? [good/bad]: '
+      print 'What is the book condition? [new/old/good/bad]: '
       cover_state = gets.chomp.downcase
       validate_condition(cover_state)
     end

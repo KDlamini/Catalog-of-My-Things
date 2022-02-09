@@ -1,7 +1,7 @@
-require_relative 'helpers'
-require './add_book'
-require './label'
-require './list_items'
+require_relative './modules/helpers'
+require './modules/add_book'
+require './modules/list_items'
+require './classes/label'
 
 # Create App class
 class App
