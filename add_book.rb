@@ -14,10 +14,10 @@ module CreateBook
     print 'Who is the publisher?: '
     publisher = gets.chomp.downcase
 
-    puts "\nSelect a book label by number: "
+    puts "\nSelect a book label by number. "
     list_labels
     label_index = gets.chomp.to_i
-    label = @labels[label_index]
+    label = labels[label_index]
     book = Book.new(publisher, cover_state, publish_date)
 
     label.add_item(book)
