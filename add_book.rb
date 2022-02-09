@@ -7,9 +7,11 @@ module CreateBook
   def add_book
     print 'Published date (dd-mm-yyyy): '
     publish_date = gets.chomp
+    validate_date(publish_date)
 
     print 'What is the book condition? [good/bad]: '
     cover_state = gets.chomp.downcase
+    cover_state = validate_condition(cover_state)
 
     print 'Who is the publisher?: '
     publisher = gets.chomp.downcase
@@ -24,5 +26,17 @@ module CreateBook
     update_books(book)
     puts "\nBook created successfully ✔️"
     continue?
+  end
+
+  def validate_date(date)
+    format_ok = date.match(/\d{2}-\d{2}-\d{4}/)
+
+    if format_ok
+      nil
+    else
+      clear
+      puts "Invalid date format. Please try again.\n\n"
+      add_book
+    end
   end
 end
