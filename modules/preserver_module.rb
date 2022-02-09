@@ -34,6 +34,19 @@ module PreserverModule
     end
   end
 
+  def fetch_labels
+    path = 'json/labels.json'
+
+    if file_exist?(path)
+      fetch_data(path).map do |label|
+        Label.new(label['title'], label['color'])
+      end
+    else
+      create_file(path)
+      []
+    end
+  end
+
   def save_book(book)
     path = 'json/books.json'
     data = fetch_data(path)
@@ -51,7 +64,7 @@ module PreserverModule
   def save_label(label)
     path = 'json/labels.json'
     data = fetch_data(path)
-    new_label = { title: label.title, color: book.color }
+    new_label = { title: label.title, color: label.color }
 
     data.push(new_label)
     save(path, data)
