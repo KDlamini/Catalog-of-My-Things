@@ -12,8 +12,8 @@ describe Author do
     end
 
     it 'has last_name equal to "faris"' do
-        expect(author.last_name).to eq('faris')
-      end
+      expect(author.last_name).to eq('faris')
+    end
 
     item = Item.new('2021/06/10')
     author.add_item(item)

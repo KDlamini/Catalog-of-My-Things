@@ -6,7 +6,7 @@ describe Game do
     multiplayer = true
     name = 'fifa'
     last_played_at = Date.parse('22-02-22')
-    
+
     game = Game.new(multiplayer, name, last_played_at)
 
     it 'is an instance of class item' do
