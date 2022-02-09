@@ -21,7 +21,7 @@ module CreateLabel
     else
       clear
       puts "Invalid label selection. Please try again.\n\n"
-      puts "Select a book label by number/add new label.\n\n"
+      puts 'Select a book label by number/add new label'
       list_labels
       puts "#{@labels.size}) Add new label"
       label_index = gets.chomp.to_i

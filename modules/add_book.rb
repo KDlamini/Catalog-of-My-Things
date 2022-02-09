@@ -18,7 +18,7 @@ module CreateBook
     print 'Who is the publisher?: '
     publisher = gets.chomp
 
-    puts "\nSelect a book label by number/add new label\n\n"
+    puts "\nSelect a book label by number/add new label"
     list_labels
     puts "#{@labels.size}) Add new label"
     label_index = gets.chomp.to_i
