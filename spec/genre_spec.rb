@@ -20,7 +20,12 @@ describe Genre do
 
     genre.add_item(item)
 
-    
+    it 'should still have 1 item after calling add_item with the same item' do
+      expect(genre.items.size).to eq(1)
+      expect(genre.items[0]).to eq(item)
+    end
+
+    it 'item should have it as genre' do
       expect(item.genre).to eq(genre)
     end
   end
