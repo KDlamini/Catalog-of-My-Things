@@ -1,17 +1,19 @@
 require_relative './item'
 
 class Game < Item
-  attr_accessor :multiplayer, :cover_state
-  attr_reader :last_played_at
+  attr_accessor :multiplayer, :name, :last_played_at
 
-  def initialize(multiplayer, cover_state, last_played_at)
+  def initialize(multiplayer, name, last_played_at)
     super(last_played_at)
     @multiplayer = multiplayer
-    @cover_state = cover_state
+    @name = name
     @last_played_at = last_played_at
   end
 
   def can_be_archived?
-    @cover_state > 2 || super
+    recent_year = Time.new.year
+    year_last_played = @last_played_at.year
+    archive = recent_year - year_last_played
+    archive > 2 && super
   end
 end

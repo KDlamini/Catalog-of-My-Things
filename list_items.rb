@@ -31,9 +31,9 @@ module ListItems
       @games.each_with_index do |game, index|
         puts "
         #{index})
+        name: #{game.name} |
         multiplayer: #{game.multiplayer} |
-        last played: #{game.last_played_at} |
-        Condition: #{game.cover_state}
+        last played: #{game.last_played_at}
         "
       end
     end
