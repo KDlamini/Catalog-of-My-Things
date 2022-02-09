@@ -1,3 +1,5 @@
+require 'date'
+
 # create item class
 class Item
   attr_accessor :publish_date, :genre, :author, :label
@@ -13,10 +15,11 @@ class Item
   end
 
   def can_be_archived?
-    @publish_date > 10
+    archived_date = Date.iso8601(@publish_date).next_year(10)
+    Date.today > archived_date
   end
 
   def move_to_archive
-    @archived = true if can_be_archived? == true
+    @archived = can_be_archived?
   end
 end
