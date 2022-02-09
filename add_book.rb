@@ -39,4 +39,18 @@ module CreateBook
       add_book
     end
   end
+
+  def validate_condition(condition)
+    condition = condition.capitalize
+
+    if %w[Good Bad].include?(condition)
+      condition
+    else
+      clear
+      puts "Invalid condition. Please try again.\n\n"
+      print 'What is the book condition? [good/bad]: '
+      cover_state = gets.chomp.downcase
+      validate_condition(cover_state)
+    end
+  end
 end
