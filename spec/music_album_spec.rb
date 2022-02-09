@@ -20,7 +20,9 @@ describe MusicAlbum do
       expect(album.can_be_archived?).to eq(false)
     end
 
-    new_date =  
+    new_date = Date.parse('2000/02/02')
+    new_name = 'Hello'
+    new_album = MusicAlbum.new(on_spotify, new_name, new_date)
 
     it 'checks can_be_archived as true' do
       expect(new_album.can_be_archived?).to eq(true)
