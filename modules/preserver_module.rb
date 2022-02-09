@@ -26,7 +26,11 @@ module PreserverModule
 
     if file_exist?(path)
       fetch_data(path).map do |book|
-        Book.new(book['publisher'], book['cover_state'], book['publish_date'])
+        select_label = @labels.select { |label| label.title == book['title'] }
+        new_book = Book.new(book['publisher'], book['cover_state'], book['publish_date'])
+        new_book.label = select_label[0]
+
+        new_book
       end
     else
       create_file(path)
@@ -52,6 +56,7 @@ module PreserverModule
     data = fetch_data(path)
 
     new_book = {
+      title: book.label.title,
       publisher: book.publisher,
       cover_state: book.cover_state,
       publish_date: book.publish_date
