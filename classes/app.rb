@@ -167,5 +167,13 @@ class App
   end
 
   private
- 
+
+  def load_data
+    @books = load_file('books')
+    @labels = load_file('labels')
+    @authors = load_file('authors')
+    @albums = load_file('albums')
+    @genres = load_file('genres')
+    @games = load_file('games')
+  end
 end
