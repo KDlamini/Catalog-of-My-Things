@@ -1,5 +1,5 @@
-require_relative './classes/app'
-require_relative './modules/music_album_functions'
+require_relative '../classes/app'
+require_relative '../modules/music_album_functions'
 
 
 class Main
