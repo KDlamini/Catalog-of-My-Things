@@ -14,7 +14,8 @@ class App
 
   def initialize
     @books = []
-    @labels = [Label.new('The Family That Preys.', 'White'),Label.new('I Was in Heaven', 'Yellow'),Label.new('Love and Romace.', 'Red')]
+    @labels = [Label.new('The Family That Preys.', 'White'), Label.new('I Was in Heaven', 'Yellow'),
+               Label.new('Love and Romace.', 'Red')]
   end
 
   def run

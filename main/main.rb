@@ -1,11 +1,8 @@
 require_relative '../classes/app'
 require_relative '../modules/music_album_functions'
 
-
 class Main
- 
   include MusicAlbumFunction
-  
 
   def initialize
     @app = App.new
