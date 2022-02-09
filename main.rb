@@ -14,9 +14,8 @@ class App
   include CreateLabel
 
   def initialize
-    fetch_labels
-    @books = fetch_books
     @labels = fetch_labels
+    @books = fetch_books
   end
 
   def run
