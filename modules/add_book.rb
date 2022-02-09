@@ -16,7 +16,7 @@ module CreateBook
     cover_state = validate_condition(cover_state)
 
     print 'Who is the publisher?: '
-    publisher = gets.chomp.downcase
+    publisher = gets.chomp
 
     puts "\nSelect a book label by number/add new label\n\n"
     list_labels
