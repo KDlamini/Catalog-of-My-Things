@@ -19,6 +19,19 @@ module PreserverModule
     File.exist? path
   end
 
+  def fetch_books
+    path = 'json/books.json'
+
+    if file_exist?(path)
+      fetch_data(path).map do |book|
+        Book.new(book['publisher'], book['cover_state'], book['publish_date'])
+      end
+    else
+      create_file(path)
+      []
+    end
+  end
+
   def save_book(book)
     path = 'json/books.json'
     data = fetch_data(path)
