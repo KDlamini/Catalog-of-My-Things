@@ -1,8 +1,10 @@
 require './classes/book'
 require_relative 'list_items'
+require_relative 'add_label'
 
 module CreateBook
   include ListItems
+  include CreateLabel
 
   def add_book
     print 'Published date (yyyy-mm-dd): '
@@ -16,13 +18,15 @@ module CreateBook
     print 'Who is the publisher?: '
     publisher = gets.chomp.downcase
 
-    puts "\nSelect a book label by number: "
+    puts "\nSelect a book label by number/add new label\n\n"
     list_labels
+    puts "#{@labels.size}) Add new label"
     label_index = gets.chomp.to_i
-    label = @labels[label_index]
-    book = Book.new(publisher, cover_state, publish_date)
 
-    label.add_item(book)
+    label = validate_label_selection(label_index)
+    book = Book.new(publisher, cover_state, publish_date)
+    book.label = label
+
     update_books(book)
     puts "\nBook created successfully ✔️"
     continue?
