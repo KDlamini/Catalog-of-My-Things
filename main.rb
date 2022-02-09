@@ -3,6 +3,7 @@ require './modules/add_book'
 require './modules/list_items'
 require './modules/preserver_module'
 require './classes/label'
+require './modules/add_label'
 
 # Create App class
 class App
@@ -10,10 +11,12 @@ class App
   include CreateBook
   include ListItems
   include PreserverModule
+  include CreateLabel
 
   def initialize
+    fetch_labels
     @books = fetch_books
-    @labels = [Label.new('The Family That Preys.', 'White'),Label.new('I Was in Heaven', 'Yellow'),Label.new('Love and Romace.', 'Red')]
+    @labels = fetch_labels
   end
 
   def run
@@ -99,6 +102,11 @@ class App
   def update_books(book)
     @books << book
     save_book(book)
+  end
+
+  def update_labels(label)
+    @labels << label
+    save_label(label)
   end
 end
 
