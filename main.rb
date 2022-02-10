@@ -1,11 +1,9 @@
-require_relative 'helpers'
-require './add_book'
-require './label'
-require_relative './modules/list_items'
+require './modules/helpers'
+require './modules/add_book'
+require './classes/label'
+require './modules/list_items'
 require './modules/add_album'
-require_relative './modules/preserver_module'
-require './classes/genre'
-require './classes/music_album'
+require './modules/preserver_module'
 
 # Create App class
 class App
@@ -19,10 +17,8 @@ class App
   attr_reader :labels
 
   def initialize
+    @labels = []
     @books = []
-    @labels = [Label.new('The Family That Preys.', 'White'), Label.new('I Was in Heaven', 'Yellow'),
-               Label.new('Love and Romace.', 'Red')]
-
     @albums = load_file('albums')
     @genres = load_file('genres')
   end

@@ -1,11 +1,4 @@
-require './book'
-require './classes/music_album'
-require_relative './preserver_module'
-require './classes/genre'
-
 module ListItems
-  include PreserverModule
-
   def list_labels
     puts 'List of all labels : '
     labels.each_with_index { |label, index| puts "#{index}) Title: #{label.title} | Color: #{label.color}" }
@@ -48,17 +41,5 @@ module ListItems
       puts genre['genre_name'].to_s.strip
       puts "\n----------------------------"
     end
-  end
-
-  def preserve_files
-    save_data_as_json(@albums, 'albums')
-    save_data_as_json(@genres, 'genres')
-  end
-
-  private
-
-  def load_data
-    @albums = load_file('albums')
-    @genres = load_file('genres')
   end
 end
