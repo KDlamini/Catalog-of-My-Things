@@ -12,7 +12,7 @@ module CreateGame
     print 'What is the name of the game?: '
     name = gets.chomp.downcase
 
-    print 'When did you last play the game? (yyyy-mm-dd): '
+    print 'When did you last play the game? (dd-mm-yyyy): '
     last_played_at = gets.chomp
 
     puts "\nSelect a game author by number: "

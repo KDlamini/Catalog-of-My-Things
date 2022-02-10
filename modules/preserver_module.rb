@@ -38,12 +38,40 @@ module PreserverModule
     end
   end
 
+  def fetch_games
+    path = 'json/games.json'
+
+    if file_exist?(path)
+      fetch_data(path).map do |game|
+        new_book = Game.new(game['multiplayer'], game['name'], game['last_played_at'])
+
+        new_book
+      end
+    else
+      create_file(path)
+      []
+    end
+  end
+
   def fetch_labels
     path = 'json/labels.json'
 
     if file_exist?(path)
       fetch_data(path).map do |label|
         Label.new(label['title'], label['color'])
+      end
+    else
+      create_file(path)
+      []
+    end
+  end
+
+  def fetch_authors
+    path = 'json/authors.json'
+
+    if file_exist?(path)
+      fetch_data(path).map do |author|
+        Author.new(author['first_name'], author['last_name'])
       end
     else
       create_file(path)
@@ -66,12 +94,35 @@ module PreserverModule
     save(path, data)
   end
 
+  def save_game(game)
+    path = 'json/games.json'
+    data = fetch_data(path)
+
+    new_game = {
+      multiplayer: game.multiplayer,
+      name: game.name,
+      last_played_at: game.last_played_at
+    }
+
+    data.push(new_game)
+    save(path, data)
+  end
+
   def save_label(label)
     path = 'json/labels.json'
     data = fetch_data(path)
     new_label = { title: label.title, color: label.color }
 
     data.push(new_label)
+    save(path, data)
+  end
+
+  def save_author(author)
+    path = 'json/authors.json'
+    data = fetch_data(path)
+    new_author = { first_name: author.first_name, last_name: author.last_name }
+
+    data.push(new_author)
     save(path, data)
   end
 end
