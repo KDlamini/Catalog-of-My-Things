@@ -1,4 +1,4 @@
-require '../classes/book'
+require_relative '../classes/book'
 
 describe Book do
   before :each do
@@ -15,3 +15,4 @@ describe Book do
     expect(can_be_archived).to be false
   end
 end
+_
