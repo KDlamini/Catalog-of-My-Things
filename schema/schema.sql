@@ -1,3 +1,5 @@
+/* Database schema analogical to the structure of the classes in our app. */
+
 -- Create book table
 CREATE TABLE Book (
  id SERIAL,

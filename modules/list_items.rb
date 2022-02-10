@@ -1,6 +1,3 @@
-# require './classes/book'
-# require './classes/game'
-
 module ListItems
   def list_labels
     puts 'List of all labels : '
