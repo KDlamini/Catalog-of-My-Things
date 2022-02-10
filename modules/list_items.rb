@@ -5,6 +5,7 @@ module ListItems
   end
 
   def list_authors
+    puts 'List of all authors : '
     @authors.each_with_index { |author, index| puts "#{index}) name: #{author.first_name} #{author.last_name}" }
   end
 
