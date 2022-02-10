@@ -15,6 +15,12 @@ CREATE TABLE Book (
 );
 
 -- Create label table
+CREATE TABLE labels (
+label_id SERIAL,
+title VARCHAR(30),
+color VARCHAR(30)
+PRIMARY KEY(label_id)
+);
 
 -- Create music album table 
 
