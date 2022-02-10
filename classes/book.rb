@@ -1,4 +1,4 @@
-require './item'
+require_relative 'item'
 
 # Create class Book
 class Book < Item

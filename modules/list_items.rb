@@ -1,4 +1,4 @@
-require './book'
+require './classes/book'
 
 module ListItems
   def list_labels

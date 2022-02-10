@@ -1,5 +1,5 @@
-require './book'
-require './list_items'
+require './classes/book'
+require_relative 'list_items'
 
 module CreateBook
   include ListItems
