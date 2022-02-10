@@ -1,5 +1,5 @@
-require './classes/book'
-require './classes/game'
+# require './classes/book'
+# require './classes/game'
 
 module ListItems
   def list_labels
