@@ -5,7 +5,7 @@ AllCops:
     - "Rakefile"
     - "node_modules/**/*"
     -  'main.rb'
-    - "/main/main.rb"
+    - "./modules/list_items.rb"
 
    
 
