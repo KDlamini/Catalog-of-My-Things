@@ -5,7 +5,7 @@ class Author < Item
   attr_reader :items
 
   def initialize(first_name, last_name)
-    super()
+    super(items)
     @id = Random.rand(1..10_000)
     @first_name = first_name
     @last_name = last_name
@@ -13,7 +13,7 @@ class Author < Item
   end
 
   def add_item(instance)
-    @items << instance
+    @items.push(instance) unless @items.include?(instance)
     instance.author = self
   end
 end

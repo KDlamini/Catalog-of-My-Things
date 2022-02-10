@@ -1,26 +1,28 @@
-require './modules/helpers'
+require_relative './modules/helpers'
 require './modules/add_book'
-require './classes/label'
-require './modules/list_items'
 require './modules/add_album'
+require './modules/list_items'
 require './modules/preserver_module'
+require './classes/label'
+require './modules/add_label'
 
 # Create App class
 class App
   include Helpers
   include CreateBook
-  include ListItems
+  include CreateLabel
   include CreateAlbum
+  include CreateGame
+  include ListItems
   include PreserverModule
 
-  attr_accessor :books
-  attr_reader :labels
-
   def initialize
-    @labels = []
-    @books = []
+    @labels = fetch_labels
+    @books = fetch_books
     @albums = load_file('albums')
     @genres = load_file('genres')
+    @games = []
+    @authors = [Author.new('Hamid', 'Faris'), Author.new('David', 'Thlamini'), Author.new('Goliath', 'Smith')]
   end
 
   def run
@@ -69,19 +71,22 @@ class App
     case input
     when '1'
       list_all_books
+      continue?
     when '2'
       list_all_albums
     when '3'
       puts 'List all movies'
     when '4'
-      puts 'List of games'
+      list_all_games
+      continue?
     when '5'
       list_all_genres
     when '6'
       list_labels
       continue?
     when '7'
-      puts 'List all authors'
+      list_authors
+      continue?
     when '8'
       puts 'List all sources'
     end
@@ -96,7 +101,7 @@ class App
     when '11'
       puts 'Add a movie'
     when '12'
-      puts 'Add a game'
+      add_game
     when '13'
       puts 'Goob bye (:......'
       exit
@@ -115,7 +120,17 @@ class App
   end
 
   def update_books(book)
-    books << book
+    @books << book
+    save_book(book)
+  end
+
+  def update_labels(label)
+    @labels << label
+    save_label(label)
+  end
+
+  def update_games(game)
+    @games << game
   end
 end
 
