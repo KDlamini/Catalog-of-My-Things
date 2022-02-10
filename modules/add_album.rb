@@ -39,7 +39,7 @@ module CreateAlbum
       'genre_name' => new_genre_instance.name
     }
 
-    @albums << hash
-    @genres << genre_hash
+    update_albums(hash)
+    update_genres(genre_hash)
   end
 end

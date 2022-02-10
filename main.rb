@@ -1,8 +1,11 @@
 require_relative 'helpers'
 require './add_book'
 require './label'
-require './list_items'
+require_relative './modules/list_items'
 require './modules/add_album'
+require_relative './modules/preserver_module'
+require './classes/genre'
+require './classes/music_album'
 
 # Create App class
 class App
@@ -10,6 +13,7 @@ class App
   include CreateBook
   include ListItems
   include CreateAlbum
+  include PreserverModule
 
   attr_accessor :books
   attr_reader :labels
@@ -18,8 +22,9 @@ class App
     @books = []
     @labels = [Label.new('The Family That Preys.', 'White'), Label.new('I Was in Heaven', 'Yellow'),
                Label.new('Love and Romace.', 'Red')]
-    @albums = []
-    @genres = []    
+
+    @albums = load_file('albums')
+    @genres = load_file('genres')
   end
 
   def run
@@ -69,13 +74,13 @@ class App
     when '1'
       list_all_books
     when '2'
-      puts 'List all music albums'
+      list_all_albums
     when '3'
       puts 'List all movies'
     when '4'
       puts 'List of games'
     when '5'
-      puts 'List all genres'
+      list_all_genres
     when '6'
       list_labels
       continue?
@@ -100,6 +105,17 @@ class App
       puts 'Goob bye (:......'
       exit
     end
+  end
+
+ 
+  def update_albums(album)
+    @albums << album
+    save_data_as_json(@albums, 'albums')
+  end
+
+  def update_genres(genre)
+    @genres << genre
+    save_data_as_json(@genres, 'genres')
   end
 
   def update_books(book)

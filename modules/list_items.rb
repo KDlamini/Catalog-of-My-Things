@@ -1,12 +1,27 @@
-require_relative './music_album'
-require_relative './genre'
-require_relative '../modules/preserver_module'
+require './book'
+require './classes/music_album'
+require_relative './preserver_module'
+require './classes/genre'
 
-class App
+module ListItems
   include PreserverModule
 
-  def initialize
-    load_data
+  def list_labels
+    puts 'List of all labels : '
+    labels.each_with_index { |label, index| puts "#{index}) Title: #{label.title} | Color: #{label.color}" }
+  end
+
+  def list_all_books
+    puts 'List of all books : '
+    if books.empty?
+      puts "\nBooks list is empty."
+    else
+      books.each_with_index do |book, index|
+        puts "#{index}) Title: #{book.label.title} | Publisher: #{book.publisher} | Condition: #{book.cover_state}"
+      end
+    end
+
+    continue?
   end
 
   def list_all_albums
