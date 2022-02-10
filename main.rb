@@ -98,7 +98,6 @@ class App
     end
   end
 
- 
   def update_albums(album)
     @albums << album
     save_data_as_json(@albums, 'albums')

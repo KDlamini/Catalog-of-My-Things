@@ -30,9 +30,14 @@ module CreateBook
     puts "#{@authors.size}) Add new author"
     author_index = gets.chomp.to_i
 
+    create_book(publisher, cover_state, publish_date, label, author_index)
+  end
+
+  def create_book(publisher, cover_state, publish_date, label, author_index)
     book = Book.new(publisher, cover_state, publish_date)
     book.label = label
     book.author = @authors[author_index]
+
     update_books(book)
     puts "\nBook created successfully ✔️"
     continue?
