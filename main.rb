@@ -1,9 +1,12 @@
-require_relative './modules/helpers'
+require './modules/helpers'
 require './modules/add_book'
 require './modules/list_items'
 require './modules/preserver_module'
 require './classes/label'
 require './modules/add_label'
+require './modules/add_game'
+require './classes/author'
+require './classes/game'
 
 # Create App class
 class App

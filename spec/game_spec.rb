@@ -1,11 +1,11 @@
-require_relative '../game'
+require_relative '../classes/game'
 require 'date'
 
 describe Game do
   context 'Game class Test' do
     multiplayer = true
     name = 'fifa'
-    last_played_at = Date.parse('22-02-22')
+    last_played_at = Date.parse('22-02-2022')
 
     game = Game.new(multiplayer, name, last_played_at)
 
@@ -21,7 +21,7 @@ describe Game do
       expect(game.can_be_archived?).to eq(false)
     end
 
-    new_last_played_at = Date.parse('19-01-22')
+    new_last_played_at = Date.parse('22-02-2001')
     new_name = 'fortnite'
     new_game = Game.new(multiplayer, new_name, new_last_played_at)
 

@@ -1,5 +1,5 @@
-require './game'
-require './list_items'
+require './classes/game'
+require_relative 'list_items'
 
 module CreateGame
   include ListItems
