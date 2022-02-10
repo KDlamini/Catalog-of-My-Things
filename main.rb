@@ -1,5 +1,6 @@
 require './modules/helpers'
 require './modules/add_book'
+require './modules/add_album'
 require './modules/list_items'
 require './modules/preserver_module'
 require './classes/label'
@@ -11,14 +12,17 @@ require './classes/author'
 class App
   include Helpers
   include CreateBook
-  include ListItems
-  include CreateGame
-  include PreserverModule
   include CreateLabel
+  include CreateAlbum
+  include CreateGame
+  include ListItems
+  include PreserverModule
 
   def initialize
     @labels = fetch_labels
     @books = fetch_books
+    @albums = load_file('albums')
+    @genres = load_file('genres')
     @games = []
     @authors = [Author.new('Hamid', 'Faris'), Author.new('David', 'Thlamini'), Author.new('Goliath', 'Smith')]
   end
@@ -71,14 +75,14 @@ class App
       list_all_books
       continue?
     when '2'
-      puts 'List all music albums'
+      list_all_albums
     when '3'
       puts 'List all movies'
     when '4'
       list_all_games
       continue?
     when '5'
-      puts 'List all genres'
+      list_all_genres
     when '6'
       list_labels
       continue?
@@ -95,7 +99,7 @@ class App
     when '9'
       add_book
     when '10'
-      puts 'Add a music album'
+      add_new_album
     when '11'
       puts 'Add a movie'
     when '12'
@@ -104,6 +108,17 @@ class App
       puts 'Goob bye (:......'
       exit
     end
+  end
+
+ 
+  def update_albums(album)
+    @albums << album
+    save_data_as_json(@albums, 'albums')
+  end
+
+  def update_genres(genre)
+    @genres << genre
+    save_data_as_json(@genres, 'genres')
   end
 
   def update_books(book)
