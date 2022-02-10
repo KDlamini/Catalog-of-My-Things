@@ -15,4 +15,3 @@ describe Book do
     expect(can_be_archived).to be false
   end
 end
-_
