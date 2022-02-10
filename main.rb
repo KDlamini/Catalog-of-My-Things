@@ -21,7 +21,7 @@ class App
     @labels = fetch_labels
     @books = fetch_books
     @games = fetch_games
-    @authors = [Author.new('Hamid', 'Faris'), Author.new('David', 'Thlamini'), Author.new('Goliath', 'Smith')]
+    @authors = fetch_authors
   end
 
   def run
@@ -120,6 +120,11 @@ class App
   def update_games(game)
     @games << game
     save_game(game)
+  end
+
+  def update_authors(author)
+    @authors << author
+    save_author(author)
   end
 end
 

@@ -1,8 +1,10 @@
 require './classes/game'
 require_relative 'list_items'
+require_relative 'add_author'
 
 module CreateGame
   include ListItems
+  include CreateAuthor
 
   def add_game
     print 'Is the game multiplayer?  enter Y for "Yes" and N for "no": '
@@ -17,11 +19,13 @@ module CreateGame
 
     puts "\nSelect a game author by number: "
     list_authors
+    puts "#{@authors.size}) Add new Author"
     author_index = gets.chomp.to_i
-    author = @authors[author_index]
-    game = Game.new(multiplayer, name, last_played_at)
 
-    author.add_item(game)
+    author = validate_authors_selection(author_index)
+    game = Game.new(multiplayer, name, last_played_at)
+    game.author = author
+
     update_games(game)
     puts "\nYour game has been added successfully ✔️"
     continue?
