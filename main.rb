@@ -70,12 +70,10 @@ class App
     case input
     when '1'
       list_all_books
-      continue?
     when '2'
       list_all_albums
     when '3'
       list_all_games
-      continue?
     when '4'
       list_all_genres
     when '5'

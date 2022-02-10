@@ -32,6 +32,8 @@ module ListItems
     .strip.rjust(10)} \t| #{album['album_name'].to_s.strip.rjust(10)} \t| #{album['publish_date'].to_s.strip.rjust(10)}"
       puts "\n---------------------------------------------------"
     end
+
+    continue?
   end
 
   def list_all_genres
@@ -45,6 +47,8 @@ module ListItems
       puts genre['genre_name'].to_s.strip
       puts "\n----------------------------"
     end
+
+    continue?
   end
 
   def list_all_games
