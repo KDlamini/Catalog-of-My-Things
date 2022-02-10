@@ -1,9 +1,5 @@
-<<<<<<< HEAD:list_items.rb
-require_relative './game'
-require './book'
-=======
 require './classes/book'
->>>>>>> ddb34bcc5988dd1d4ed90eafe00efdfe1eed542b:modules/list_items.rb
+require './classes/game'
 
 module ListItems
   def list_labels
