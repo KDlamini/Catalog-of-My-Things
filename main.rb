@@ -2,12 +2,14 @@ require_relative 'helpers'
 require './add_book'
 require './label'
 require './list_items'
+require './modules/add_album'
 
 # Create App class
 class App
   include Helpers
   include CreateBook
   include ListItems
+  include CreateAlbum
 
   attr_accessor :books
   attr_reader :labels
@@ -16,6 +18,8 @@ class App
     @books = []
     @labels = [Label.new('The Family That Preys.', 'White'), Label.new('I Was in Heaven', 'Yellow'),
                Label.new('Love and Romace.', 'Red')]
+    @albums = []
+    @genres = []    
   end
 
   def run
@@ -87,7 +91,7 @@ class App
     when '9'
       add_book
     when '10'
-      puts 'Add a music album'
+      add_new_album
     when '11'
       puts 'Add a movie'
     when '12'
