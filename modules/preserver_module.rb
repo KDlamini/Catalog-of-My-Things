@@ -69,6 +69,7 @@ module PreserverModule
 
     new_book = {
       title: book.label.title,
+      author: "#{book.author.first_name} #{book.author.last_name}",
       publisher: book.publisher,
       cover_state: book.cover_state,
       publish_date: book.publish_date
