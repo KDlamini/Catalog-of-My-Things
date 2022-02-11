@@ -58,6 +58,11 @@ To auto-correct correctable Rubocop offenses run:
 $ rubocop --auto-correct-all | rubocop -A
 ```
 
+## `Vedio Link`
+
+- [recorded video](https://drive.google.com/file/d/1fagxPIjKnF1P6p4S5UzGpBrpfKfu1xja/view)
+
+
 ## `Authors`
 
 👤 **Simo Nkosi**
