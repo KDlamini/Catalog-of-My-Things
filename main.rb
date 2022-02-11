@@ -2,11 +2,13 @@ require './modules/helpers'
 require './modules/add_book'
 require './modules/add_album'
 require './modules/list_items'
-require './modules/preserver_module'
+require './modules/fetch_data'
+require './modules/save_data'
 require './classes/label'
 require './modules/add_label'
 require './modules/add_game'
 require './classes/author'
+require './classes/game'
 
 # Create App class
 class App
@@ -16,15 +18,16 @@ class App
   include CreateAlbum
   include CreateGame
   include ListItems
-  include PreserverModule
+  include FetchData
+  include SaveData
 
   def initialize
     @labels = fetch_labels
     @books = fetch_books
     @albums = load_file('albums')
     @genres = load_file('genres')
-    @games = []
-    @authors = [Author.new('Hamid', 'Faris'), Author.new('David', 'Thlamini'), Author.new('Goliath', 'Smith')]
+    @games = fetch_games
+    @authors = fetch_authors
   end
 
   def run
@@ -120,6 +123,12 @@ class App
 
   def update_games(game)
     @games << game
+    save_game(game)
+  end
+
+  def update_authors(author)
+    @authors << author
+    save_author(author)
   end
 end
 
