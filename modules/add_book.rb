@@ -29,14 +29,15 @@ module CreateBook
     list_authors
     puts "#{@authors.size}) Add new author"
     author_index = gets.chomp.to_i
+    author = validate_authors_selection(author_index)
 
-    create_book(publisher, cover_state, publish_date, label, author_index)
+    create_book(publisher, cover_state, publish_date, label, author)
   end
 
-  def create_book(publisher, cover_state, publish_date, label, author_index)
+  def create_book(publisher, cover_state, publish_date, label, author)
     book = Book.new(publisher, cover_state, publish_date)
     book.label = label
-    book.author = @authors[author_index]
+    book.author = author
 
     update_books(book)
     puts "\nBook created successfully ✔️"

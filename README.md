@@ -73,8 +73,8 @@ $ rubocop --auto-correct-all | rubocop -A
 
 👤 **Hamid Murambiwa**
 
-- GitHub: [@githubhandle](https://github.com/hamid-murambiwa/)
-- Twitter: [@twitterhandle](https://twitter.com/Hamid87789454/)
+- GitHub: [@hamid-murambiwa](https://github.com/hamid-murambiwa/)
+- Twitter: [@Hamid87789454](https://twitter.com/Hamid87789454/)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/hamid-murambiwa/)
 
 ## 🤝 Contributing

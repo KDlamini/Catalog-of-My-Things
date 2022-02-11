@@ -30,4 +30,3 @@ module CreateAuthor
     end
   end
 end
-# Title: The Family That Preys | Publisher: Tyler Perry | Condition: Good#
