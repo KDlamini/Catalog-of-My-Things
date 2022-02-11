@@ -23,10 +23,20 @@ module CreateBook
     list_labels
     puts "#{@labels.size}) Add new label"
     label_index = gets.chomp.to_i
-
     label = validate_label_selection(label_index)
+
+    puts "\nSelect author by number/add new author"
+    list_authors
+    puts "#{@authors.size}) Add new author"
+    author_index = gets.chomp.to_i
+
+    create_book(publisher, cover_state, publish_date, label, author_index)
+  end
+
+  def create_book(publisher, cover_state, publish_date, label, author_index)
     book = Book.new(publisher, cover_state, publish_date)
     book.label = label
+    book.author = @authors[author_index]
 
     update_books(book)
     puts "\nBook created successfully ✔️"
