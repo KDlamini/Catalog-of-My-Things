@@ -16,16 +16,18 @@ describe MusicAlbum do
       expect(album.on_spotify).to eq(true)
     end
 
+    new_on_spotify = false
+    new_album1 = MusicAlbum.new(new_on_spotify, name, publish_date)
     it 'checks can_be_archived as false' do
-      expect(album.can_be_archived?).to eq(false)
+      expect(new_album1.can_be_archived?).to eq(false)
     end
 
-    new_date = Date.parse('2000/02/02')
+    new_date = Date.parse('02-02-2000')
     new_name = 'Hello'
-    new_album = MusicAlbum.new(on_spotify, new_name, new_date)
+    new_album2 = MusicAlbum.new(on_spotify, new_name, new_date)
 
     it 'checks can_be_archived as true' do
-      expect(new_album.can_be_archived?).to eq(true)
+      expect(new_album2.can_be_archived?).to eq(true)
     end
   end
 end
