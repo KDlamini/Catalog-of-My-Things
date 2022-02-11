@@ -23,6 +23,7 @@ module Helpers
 
   def exit
     clear
+    puts "\nGood Bye (:......\n\n"
     nil
   end
 end

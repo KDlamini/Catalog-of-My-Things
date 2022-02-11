@@ -12,7 +12,7 @@ module CreateGame
     multiplayer = multiplayer == 'Y' || true
 
     print 'What is the name of the game?: '
-    name = gets.chomp.downcase
+    name = gets.chomp.capitalize
 
     print 'When did you last play the game? (dd-mm-yyyy): '
     last_played_at = gets.chomp

@@ -1,7 +1,9 @@
 require './modules/helpers'
 require './modules/add_book'
+require './modules/add_album'
 require './modules/list_items'
-require './modules/preserver_module'
+require './modules/fetch_data'
+require './modules/save_data'
 require './classes/label'
 require './modules/add_label'
 require './modules/add_game'
@@ -12,14 +14,18 @@ require './classes/game'
 class App
   include Helpers
   include CreateBook
-  include ListItems
-  include CreateGame
-  include PreserverModule
   include CreateLabel
+  include CreateAlbum
+  include CreateGame
+  include ListItems
+  include FetchData
+  include SaveData
 
   def initialize
     @labels = fetch_labels
     @books = fetch_books
+    @albums = load_file('albums')
+    @genres = load_file('genres')
     @games = fetch_games
     @authors = fetch_authors
   end
@@ -34,13 +40,13 @@ class App
     options
     input = gets.chomp
 
-    if input.to_i.between?(1, 8)
+    if input.to_i.between?(1, 6)
       clear
       list_selection(input)
-    elsif input.to_i.between?(9, 12)
+    elsif input.to_i.between?(7, 9)
       clear
       add_selection(input)
-    elsif input == '13'
+    elsif input == '10'
       exit
     else
       invalid_prompt
@@ -52,17 +58,14 @@ class App
     puts "\nChoose from the options below:
     1 - List all books
     2 - List all music albums
-    3 - List all movies
-    4 - List of games
-    5 - List all genres (e.g 'Comedy', 'Thriller')
-    6 - List all labels (e.g. 'Gift', 'New')
-    7 - List all authors (e.g. 'Stephen King')
-    8 - List all sources (e.g. 'From a friend', 'Online shop')
-    9 - Add a book
-    10 - Add a music album
-    11 - Add a movie
-    12 - Add a game
-    13 - exit
+    3 - List of games
+    4 - List all genres (e.g 'Comedy', 'Thriller')
+    5 - List all labels (e.g. 'Gift', 'New')
+    6 - List all authors (e.g. 'Stephen King')
+    7 - Add a book
+    8 - Add a music album
+    9 - Add a game
+    10 - exit
     "
   end
 
@@ -70,41 +73,42 @@ class App
     case input
     when '1'
       list_all_books
-      continue?
     when '2'
-      puts 'List all music albums'
+      list_all_albums
     when '3'
-      puts 'List all movies'
-    when '4'
       list_all_games
-      continue?
+    when '4'
+      list_all_genres
     when '5'
-      puts 'List all genres'
-    when '6'
       list_labels
       continue?
-    when '7'
+    when '6'
       list_authors
       continue?
-    when '8'
-      puts 'List all sources'
     end
   end
 
   def add_selection(input)
     case input
-    when '9'
+    when '7'
       add_book
-    when '10'
-      puts 'Add a music album'
-    when '11'
-      puts 'Add a movie'
-    when '12'
+    when '8'
+      add_new_album
+    when '9'
       add_game
-    when '13'
-      puts 'Goob bye (:......'
+    when '10'
       exit
     end
+  end
+
+  def update_albums(album)
+    @albums << album
+    save_data_as_json(@albums, 'albums')
+  end
+
+  def update_genres(genre)
+    @genres << genre
+    save_data_as_json(@genres, 'genres')
   end
 
   def update_books(book)

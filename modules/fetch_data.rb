@@ -1,6 +1,18 @@
 require 'json'
 
-module PreserverModule
+module FetchData
+  def save_data_as_json(data, file_name)
+    File.write("./json/#{file_name}.json", JSON.generate(data)) if data.any?
+  end
+
+  def load_file(file_name)
+    if File.exist?("./json/#{file_name}.json")
+      JSON.parse(File.read("./json/#{file_name}.json"))
+    else
+      []
+    end
+  end
+
   def create_file(path)
     Dir.mkdir('json') unless Dir.exist?('json')
 
@@ -29,7 +41,6 @@ module PreserverModule
         select_label = @labels.select { |label| label.title == book['title'] }
         new_book = Book.new(book['publisher'], book['cover_state'], book['publish_date'])
         new_book.label = select_label[0]
-
         new_book
       end
     else
@@ -40,11 +51,9 @@ module PreserverModule
 
   def fetch_games
     path = 'json/games.json'
-
     if file_exist?(path)
       fetch_data(path).map do |game|
         new_book = Game.new(game['multiplayer'], game['name'], game['last_played_at'])
-
         new_book
       end
     else
@@ -77,52 +86,5 @@ module PreserverModule
       create_file(path)
       []
     end
-  end
-
-  def save_book(book)
-    path = 'json/books.json'
-    data = fetch_data(path)
-
-    new_book = {
-      title: book.label.title,
-      publisher: book.publisher,
-      cover_state: book.cover_state,
-      publish_date: book.publish_date
-    }
-
-    data.push(new_book)
-    save(path, data)
-  end
-
-  def save_game(game)
-    path = 'json/games.json'
-    data = fetch_data(path)
-
-    new_game = {
-      multiplayer: game.multiplayer,
-      name: game.name,
-      last_played_at: game.last_played_at
-    }
-
-    data.push(new_game)
-    save(path, data)
-  end
-
-  def save_label(label)
-    path = 'json/labels.json'
-    data = fetch_data(path)
-    new_label = { title: label.title, color: label.color }
-
-    data.push(new_label)
-    save(path, data)
-  end
-
-  def save_author(author)
-    path = 'json/authors.json'
-    data = fetch_data(path)
-    new_author = { first_name: author.first_name, last_name: author.last_name }
-
-    data.push(new_author)
-    save(path, data)
   end
 end
