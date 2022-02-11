@@ -1,6 +1,3 @@
-# require './classes/book'
-# require './classes/game'
-
 module ListItems
   def list_labels
     puts 'List of all labels : '
@@ -8,6 +5,7 @@ module ListItems
   end
 
   def list_authors
+    puts 'List of all authors : '
     @authors.each_with_index { |author, index| puts "#{index}) name: #{author.first_name} #{author.last_name}" }
   end
 
@@ -35,6 +33,8 @@ module ListItems
     .strip.rjust(10)} \t| #{album['album_name'].to_s.strip.rjust(10)} \t| #{album['publish_date'].to_s.strip.rjust(10)}"
       puts "\n---------------------------------------------------"
     end
+
+    continue?
   end
 
   def list_all_genres
@@ -48,6 +48,8 @@ module ListItems
       puts genre['genre_name'].to_s.strip
       puts "\n----------------------------"
     end
+
+    continue?
   end
 
   def list_all_games

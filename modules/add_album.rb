@@ -21,6 +21,7 @@ module CreateAlbum
     add_album(album_name, publish_date, genre_name, on_spotify)
     puts "\nNew Album Added!"
     puts "\n-------------------------------"
+    continue?
   end
 
   def add_album(album_name, publish_date, genre_name, on_spotify)
